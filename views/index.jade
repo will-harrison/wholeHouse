@@ -3,3 +3,16 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  .controls
+    | Name:
+    input#name(style='width:350px;')
+    br
+    input#field(style='width:350px;')
+    input#send(type='button', value='send')
+
+    script
+      :coffee
+        socket = io.connect()
+        socket.on 'connect', (data) ->
+          console.log 'called from index.jade'
+          socket.emit 'screen'
