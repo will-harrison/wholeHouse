@@ -10,6 +10,7 @@ var express = require('express')
   , spawn = require('child_process').spawn
   , routes = require('./routes')
   , timer = require('./routes/timer')
+  , cb = require('./public/javascripts/cleanupBuddy.js')
 
 // all environments 
 app.set('port', process.env.TEST_PORT || 3000);
@@ -19,7 +20,12 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
+app.use(require("stylus").middleware({
+  compress: true,
+  src: __dirname + "/public"
+}));
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 //Routes
 app.get('/', routes.index);
@@ -47,9 +53,9 @@ var ss;
 io.sockets.on('connection', function (socket) {
 
   socket.on("timer", function(data) {
-    socket.emit('countdown', {time: '00:02'});
-  
-  });
+    var cleanup = cb.countdown;
+    socket.emit('countdown', {time: cleanup});
+ });
   socket.on("screen", function(data){
    socket.type = "screen";
    ss = socket;

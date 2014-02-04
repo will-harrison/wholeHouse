@@ -1,7 +1,4 @@
-wh = window.wholeHouse = {}
-wh.tools = {}
-
-wh.tools.countdown = (milliseconds, update, complete=null) ->
+exports.countdown = (milliseconds, update, complete=null) ->
   start = new Date
   frequency = 100
   callback = () ->
@@ -14,13 +11,13 @@ wh.tools.countdown = (milliseconds, update, complete=null) ->
       complete()
   setTimeout callback, frequency
 
-wh.tools.padLeft = (length, string, padString) ->
+exports.padLeft = (length, string, padString) ->
   string = string.toString()
   if string.length < length
     for i in [1..length - string.length]
       string = padString + string
   string
 
-wh.tools.randrange = (min, max) ->
+exports.randrange = (min, max) ->
   Math.floor(Math.random() * ((max - min) + min))
 
