@@ -6,7 +6,7 @@ block content
     :coffee
       socket = io.connect()
       socket.on 'connect', (data) ->
-        sockets.emit 'timer'
+        socket.emit 'timer'
       socket.on 'countdown', (data) ->
         console.log(data)
         $('#timer').text(data.time)
