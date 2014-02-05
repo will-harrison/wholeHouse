@@ -8,5 +8,5 @@ module.exports.listen = (server) ->
       console.log 'sockets from index'
       socket.emit 'indexResponse'
     socket.on 'timer', (data) ->
-      countdown = require('./public/javascripts/cleanupBuddy.js')
-      socket.emit 'countdown', {time: countdown.countdown}
+      countdown = require('./public/javascripts/wholeHouse.js')
+      countdown.countdownEmit(5, 'countdown')

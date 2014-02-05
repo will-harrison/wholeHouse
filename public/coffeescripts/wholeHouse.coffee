@@ -1,3 +1,5 @@
+io = require('socket.io')
+
 exports.countdown = (milliseconds, update, complete=null) ->
   start = new Date
   frequency = 100
@@ -19,5 +21,11 @@ exports.padLeft = (length, string, padString) ->
   string
 
 exports.randrange = (min, max) ->
-  Math.floor(Math.random() * ((max - min) + min))
+  Math.floor(Math.random() * (max - min + 1)) + min
 
+exports.countdownEmit = (seconds, emitTo) ->
+  callback = (emitTo, seconds) ->
+    socket.emit emitTo, {time: seconds} 
+    seconds--
+    setTimeout callback, 1000
+  setTimeout callback, 1000

@@ -15,10 +15,8 @@
       });
       return socket.on('timer', function(data) {
         var countdown;
-        countdown = require('./public/javascripts/cleanupBuddy.js');
-        return socket.emit('countdown', {
-          time: countdown.countdown
-        });
+        countdown = require('./public/javascripts/wholeHouse.js');
+        return countdown.countdownEmit(5, 'countdown');
       });
     });
   };
