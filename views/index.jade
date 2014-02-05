@@ -14,7 +14,7 @@ block content
 
   script
     :coffee
-      socket = io.connect()
       socket.on 'connect', (data) ->
-        console.log 'wH called from index.jade'
-        socket.emit 'screen'
+        socket.emit 'index'
+      socket.on 'indexResponse', (data) ->
+        socket.emit 'blah', {tester: {time: 600, place: 'home'}}

@@ -6,7 +6,7 @@ var express = require('express')
   , app = express()  
   , server = require('http').createServer(app)
   , path = require('path')
-  , io = require('socket.io').listen(server)
+  , io = require('./sockets.js').listen(server)
   , spawn = require('child_process').spawn
   , routes = require('./routes')
   , timer = require('./routes/timer')
@@ -32,7 +32,7 @@ app.get('/', routes.index);
 app.get('/timer', timer.timer);
 
 //Socket.io Congfig
-io.set('log level', 1);
+//io.set('log level', 1);
 
 server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
@@ -50,6 +50,7 @@ function run_shell(cmd, args, cb, end) {
 //Save the Screen Socket in this variable
 var ss;
 //Socket.io Server
+/*
 io.sockets.on('connection', function (socket) {
 
   socket.on("timer", function(data) {
@@ -107,4 +108,4 @@ io.sockets.on('connection', function (socket) {
     }    
 
  });
-});
+});*/
