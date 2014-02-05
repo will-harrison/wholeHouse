@@ -9,5 +9,4 @@ block content
       socket.on 'countdown', (data) ->
         console.log(data)
         $('#timer').text(data.time)
-        socket.emit "timer recieved #{data}"
-
+        

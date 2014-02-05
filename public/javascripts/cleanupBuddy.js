@@ -6,6 +6,8 @@
 
   number = util.randrange(7, 16);
 
-  exports.countdown = number;
+  exports.countdown = 1 //util.countdown(number / 1000, function(timeleft) {
+//    return util.padLeft(2, timeleft.getMinutes(), 0) + ":" + util.padLeft(2, timeleft.getSeconds(), 0);
+//  });
 
 }).call(this);
