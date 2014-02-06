@@ -1,4 +1,3 @@
-io = require('socket.io')
 
 exports.countdown = (milliseconds, update, complete=null) ->
   start = new Date
