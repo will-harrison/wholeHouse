@@ -1,3 +1,0 @@
-exports.tester = () ->
-  'blah'
-  'blah'

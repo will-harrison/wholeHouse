@@ -6,11 +6,10 @@ var express = require('express')
   , app = express()  
   , server = require('http').createServer(app)
   , path = require('path')
-  , io = require('./sockets.js').listen(server)
+  , io = require('./public/sockets.js').listen(server)
   , spawn = require('child_process').spawn
   , routes = require('./routes')
   , timer = require('./routes/timer')
-  , cb = require('./public/javascripts/cleanupBuddy.js')
 
 // all environments 
 app.set('port', process.env.TEST_PORT || 3000);
