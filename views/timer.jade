@@ -9,4 +9,5 @@ block content
       socket.on 'countdown', (data) ->
         console.log(data)
         $('#timer').text(data.time)
-        
+      socket.on 'blah', (data) ->
+        $('#timer').text('blah')

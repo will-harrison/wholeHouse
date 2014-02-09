@@ -40,14 +40,21 @@
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
 
-  exports.countdownEmit = function(seconds, emitTo) {
-    var callback;
-    callback = function(emitTo, seconds) {
-      socket.emit(emitTo, {
-        time: seconds
-      });
-      seconds--;
-      return setTimeout(callback, 1000);
+  exports.countdownEmit = function(socket) {
+    var callback, seconds;
+    seconds = this.randrange(7, 14);
+    callback = function() {
+      if (seconds >= 0) {
+        socket.emit('countdown', {
+          time: seconds
+        });
+        seconds--;
+        return setTimeout(callback, 1000);
+      } else {
+        return socket.emit('countdown', {
+          time: "TIME'S UP!"
+        });
+      }
     };
     return setTimeout(callback, 1000);
   };
