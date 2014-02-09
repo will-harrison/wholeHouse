@@ -8,15 +8,15 @@
     var io;
     io = socketio.listen(server);
     io.set('log level', 1);
-    return io.sockets.on('connection', function(socket) {
+    io.sockets.on('connection', function(socket) {
+      console.log('Connection established');
       socket.on('index', function(data) {
-        console.log('sockets from index');
-        return socket.emit('indexResponse');
+        console.log('socket called from index');
+        socket.emit('indexResponse');
       });
-      return socket.on('timer', function(data) {
-        var countdown;
-        countdown = require('./public/scripts/wholeHouse.js');
-        return countdown.countdownEmit(socket, 5, 'countdown');
+      socket.on('timer', function(data) {
+        console.log('socket called from timer');
+        require('./timer.js')(socket);
       });
     });
   };

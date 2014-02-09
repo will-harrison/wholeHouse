@@ -5,11 +5,17 @@ module.exports.listen = (server) ->
   io.set 'log level', 1
 
   io.sockets.on 'connection', (socket) ->
+    console.log 'Connection established'
 
     socket.on 'index', (data) ->
-      console.log 'sockets from index'
+      console.log 'socket called from index'
       socket.emit 'indexResponse'
-
+      return
     socket.on 'timer', (data) ->
-      countdown = require('./public/scripts/wholeHouse.js')
-      countdown.countdownEmit(socket, 5, 'countdown')
+      console.log 'socket called from timer'
+      require ('timer.js')(socket)
+      return
+    return
+  return
+
+
