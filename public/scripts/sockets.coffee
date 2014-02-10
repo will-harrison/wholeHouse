@@ -13,7 +13,7 @@ module.exports.listen = (server) ->
       return
     socket.on 'timer', (data) ->
       console.log 'socket called from timer'
-      require ('timer.js')(socket)
+      require ('./timer.js')(socket)
       return
     return
   return

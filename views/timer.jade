@@ -8,6 +8,6 @@ block content
         socket.emit 'timer'
       socket.on 'countdown', (data) ->
         console.log(data)
-        $('#timer').text(data.time)
+        $('#timer').text(data.display)
       socket.on 'blah', (data) ->
         $('#timer').text('blah')
