@@ -23,11 +23,12 @@ exports.padLeft = (length, string, padString) ->
 exports.randrange = (min, max) ->
   Math.floor(Math.random() * (max - min + 1)) + min
 
-exports.countdownEmit = (socket, data, emitTo) ->
+exports.countdownEmit = (data) ->
+  data.socket.emit data.emitTo, {display: "#{data.greeting.regular} #{data.name}"}
   callback = ->
-    if data.time >= 0
-      socket.emit data.emitTo, {display: data.time}
-      data.time--
+    if data.countdownValue >= 0
+      data.socket.emit data.emitTo, {display: data.countdownValue}
+      data.countdownValue--
       setTimeout callback, 1000
-    else socket.emit data.emitTo, {display: data.name}
+    else data.socket.emit data.emitTo, {display: data.endMessage}
   setTimeout callback, 1000

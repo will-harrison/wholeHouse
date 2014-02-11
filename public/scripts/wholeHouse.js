@@ -40,18 +40,21 @@
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
 
-  exports.countdownEmit = function(socket, data, emitTo) {
+  exports.countdownEmit = function(data) {
     var callback;
+    data.socket.emit(data.emitTo, {
+      display: "" + data.greeting.regular + " " + data.name
+    });
     callback = function() {
-      if (data.time >= 0) {
-        socket.emit(data.emitTo, {
-          display: data.time
+      if (data.countdownValue >= 0) {
+        data.socket.emit(data.emitTo, {
+          display: data.countdownValue
         });
-        data.time--;
+        data.countdownValue--;
         return setTimeout(callback, 1000);
       } else {
-        return socket.emit(data.emitTo, {
-          display: data.name
+        return data.socket.emit(data.emitTo, {
+          display: data.endMessage
         });
       }
     };
