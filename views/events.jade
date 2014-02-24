@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .checklist Sleepover
+  .contact Ashton
+  .time 9:00 PM
+  .date 4/21/14
+
+  script
+    :coffee
+      socket.on 'connect', (data) ->
+        socket.emit 'event'
+      socket.on 'eventDetails', (data) ->
+        $('.contact').text(data.display)
+        $('.contact').on 'click', ->    
+          alert "hello #{data.display}"
+          $('.contact').fadeOut()
