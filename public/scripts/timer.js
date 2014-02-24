@@ -5,10 +5,11 @@
     countdown = require('./wholeHouse.js');
     return countdown.countdownEmit({
       socket: socket,
+      timeMultiplier: 3,
       countdownValue: countdown.randrange(7, 16),
       emitTo: 'countdown',
       delay: 1000,
-      name: 'Brian',
+      name: '<user>',
       endMessage: "Time's Up!",
       greeting: {
         formal: 'how do you do?',

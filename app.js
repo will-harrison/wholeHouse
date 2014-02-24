@@ -10,6 +10,8 @@ var express = require('express.io')
   , spawn = require('child_process').spawn
   , routes = require('./routes')
   , timer = require('./routes/timer')
+  , db = require('./db.js')
+  , events = require('./routes/event')
 
 // all environments 
 app.set('port', process.env.TEST_PORT || 3000);
@@ -29,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Routes
 app.get('/', routes.index);
 app.get('/timer', timer.timer);
+app.get('/event', events.events);
 
 server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

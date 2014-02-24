@@ -16,5 +16,10 @@ module.exports = (socket) ->
   ]
 
 # convert inerval to time
+args = {
+  ringTime: Date.parse("2/12/14 6:00 PM")
+   
+}
 
-
+checkTime = Date.now()
+timeLeft = 

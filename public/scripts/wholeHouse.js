@@ -41,11 +41,12 @@
   };
 
   exports.countdownEmit = function(data) {
-    var callback;
+    var callback, _ref, _ref1;
     data.socket.emit(data.emitTo, {
-      display: "" + data.greeting.regular + " " + data.name
+      display: "" + ((_ref = data.greeting.regular) != null ? _ref : null) + " " + ((_ref1 = data.name) != null ? _ref1 : null)
     });
     callback = function() {
+      var _ref2;
       if (data.countdownValue >= 0) {
         data.socket.emit(data.emitTo, {
           display: data.countdownValue
@@ -54,7 +55,7 @@
         return setTimeout(callback, 1000);
       } else {
         return data.socket.emit(data.emitTo, {
-          display: data.endMessage
+          display: (_ref2 = data.endMessage) != null ? _ref2 : null
         });
       }
     };

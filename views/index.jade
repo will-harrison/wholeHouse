@@ -1,16 +1,16 @@
 extends layout
 
 block content
-  #user Dad
-  .userData Dad's stuff
-  #user Mom
-  .userData Mom's stuff
-  #user Charlie
-  .userData Charlie's stuff
-  #user Juliet
-  .userData Juliet's stuff
-  #user Ava
-  .userData Ava's stuff
+  .user Dad
+  #userData Dad's stuff
+  .user Mom
+  #userData Mom's stuff
+  .user Charlie
+  #userData Charlie's stuff
+  .user Juliet
+  #userData Juliet's stuff
+  .user Ava
+  #userData Ava's stuff
 
   script
     :coffee
@@ -18,3 +18,5 @@ block content
         socket.emit 'index'
       socket.on 'indexResponse', (data) ->
         socket.emit 'blah', {tester: {time: 600, place: 'home'}}
+        $('.user').on 'click', ->
+          alert $('.user').text()

@@ -2,10 +2,11 @@ module.exports = (socket) ->
   countdown = require './wholeHouse.js'
   countdown.countdownEmit {
       socket
+      , timeMultiplier: 3 # * number of seconds
       , countdownValue: countdown.randrange(7, 16) 
       , emitTo: 'countdown'
       , delay: 1000
-      , name: 'Brian'
+      , name: '<user>'
       , endMessage: "Time's Up!"
       , greeting: {
           formal: 'how do you do?'
