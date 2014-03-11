@@ -1,7 +1,8 @@
-module.exports = (socket) ->
+module.exports = (socket, alarmTime, goBack) ->
+  moment = require 'moment'
   console.log 'alarm called'
   
-  interval = [
+  ringInterval = [
     1
     , 0.38
     , 0.618421052631579
@@ -15,11 +16,28 @@ module.exports = (socket) ->
     , 0
   ]
 
-# convert inerval to time
-args = {
-  ringTime: Date.parse("2/12/14 6:00 PM")
-   
-}
+# convert inerval to ringTime based on alarmTime
+alterTime = (time, modifier, scale=seconds) ->
+  moment(time * moment.duration(modifier, scale))
 
-checkTime = Date.now()
-timeLeft = 
+minuteInterval = [alarmTime - moment.duration(-goBack, "minutes")]
+minuteInterval.push(alterTime(mintuteInterval.slice(-1), i, "minutes") for i in ringInterval)
+
+console.log minuteInterval
+
+
+
+
+# While more ringTime[s] repeat
+# Determine difference between now and next ringTime
+#
+# Wait number of seconds between now and next ringTime
+#
+# Ring at ringTime
+
+ 
+
+
+
+
+
