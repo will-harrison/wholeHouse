@@ -22,6 +22,10 @@
         console.log('socket called from event');
         require('./event.js')(socket);
       });
+      socket.on('chat', function(data) {
+        socket.emit('chatConnect');
+        require('./chat.js')(socket);
+      });
     });
   };
 

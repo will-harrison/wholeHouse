@@ -19,6 +19,10 @@ module.exports.listen = (server) ->
       console.log 'socket called from event'
       require('./event.js')(socket)
       return
+    socket.on 'chat', (data) ->
+      socket.emit 'chatConnect'
+      require('./chat.js')(socket)
+      return
     return
   return
 
