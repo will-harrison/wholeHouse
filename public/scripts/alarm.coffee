@@ -1,9 +1,10 @@
+moment = require 'moment'
+
 module.exports = (socket, alarmTime, goBack) ->
-  moment = require 'moment'
   console.log 'alarm called'
   
   ringInterval = [
-    1
+      1
     , 0.38
     , 0.618421052631579
     , 0.624113475177305
@@ -16,15 +17,22 @@ module.exports = (socket, alarmTime, goBack) ->
     , 0
   ]
 
+
+alarmTime = moment(@alarmTime)
+console.log alarmTime
+
+# use mulitplier to modify time 
+multiplyTime = (time, multiplier, scale=seconds) ->
+  moment(time * moment.duration(multiplier, scale))
+
 # convert inerval to ringTime based on alarmTime
-alterTime = (time, modifier, scale=seconds) ->
-  moment(time * moment.duration(modifier, scale))
+intervalToTime = (alarmTime, @ringInterval) ->
+  minuteInterval = [alarmTime - moment.duration(-@goBack, "minutes")]
+  minuteInterval.push(multiplyTime(mintuteInterval.slice(-1), i, "minutes") for i in @ringInterval)
+  console.log minuteInterval
 
-minuteInterval = [alarmTime - moment.duration(-goBack, "minutes")]
-minuteInterval.push(alterTime(mintuteInterval.slice(-1), i, "minutes") for i in ringInterval)
-
-console.log minuteInterval
-
+#console.log intervalToTime(alarmTime, @ringInterval)
+console.log multiplyTime(moment(), .38, "minutes")
 
 
 
