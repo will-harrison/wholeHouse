@@ -19,4 +19,5 @@ block content
       socket.on 'indexResponse', (data) ->
         socket.emit 'blah', {tester: {time: 600, place: 'home'}}
         $('.user').on 'click', ->
+          socket.emit 'alarm'
           alert $('.user').text()

@@ -26,6 +26,9 @@
         socket.emit('chatConnect');
         require('./chat.js')(socket);
       });
+      return socket.on('alarmStart', function(data) {
+        reuire('./alarmTalk.js')(socket);
+      });
     });
   };
 

@@ -1,5 +1,4 @@
 _ = require 'underscore'
-howler = require '//cdnjs.cloudflare.com/ajax/libs/howler/1.1.17/howler.min.js'
 moment = require 'moment'
 exports.create = (options) ->
   settings =

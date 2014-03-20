@@ -5,7 +5,12 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(href='http://fonts.googleapis.com/css?family=Iceland' rel='stylesheet' type='text/css')
     script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js')
     script(src='/socket.io/socket.io.js')
     script socket = io.connect()
   body
     block content
+    script
+      :coffee
+        socket.on 'alarmStart', (data) ->
+          console.log data
