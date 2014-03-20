@@ -1,9 +1,10 @@
 _ = require 'underscore'
+howler = require '//cdnjs.cloudflare.com/ajax/libs/howler/1.1.17/howler.min.js'
 moment = require 'moment'
 exports.create = (options) ->
   settings =
     alarmTime: moment().add(30, "minutes")
-    goBack: [moment.duration(30, "minutes")]
+    goBack: moment.duration(30, "minutes")
     repeat: false
     frequency: moment.duration(1, "day")
   _.extend settings, options
@@ -20,13 +21,13 @@ exports.create = (options) ->
     , 0
     ]
 
-  goBack = settings.goBack
+  goBack = [settings.goBack]
   alarmTime = settings.alarmTime
 
   #populate rest of goBack array
   goBack.push(moment.duration(_.last(goBack).valueOf() * ratio)) for ratio in ringRatios
   #convert ratios to actual times
-  ringTime = (moment(alarmTime - back.valueOf()).toString() for back in goBack)
+  ringTime = (moment(alarmTime - back.valueOf()).toDate() for back in goBack)
   alarm = 
     start: () ->
       ringTime
