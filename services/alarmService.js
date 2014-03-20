@@ -14,7 +14,8 @@
         goBack: 30,
         goBackScale: 'minutes'
       };
-    }
+    },
+    "delete": function(alarm) {}
   };
 
 }).call(this);
