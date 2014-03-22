@@ -7,7 +7,7 @@
   exports.action = Model({
     id: [string, auto],
     description: [string, required],
-    command: [[string, required]],
+    command: [string, required],
     parser: [parser]
   });
 

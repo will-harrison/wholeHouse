@@ -3,7 +3,7 @@ parser = require './../public/scripts/parser.coffee'
 exports.action = Model
   id: [string, auto]
   description: [string, required]
-  command: [[string, required]]
+  command: [string, required]
   parser: [parser]
 
 # check for known actions
