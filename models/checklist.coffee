@@ -2,9 +2,9 @@
 exports.checklist = Model
   id: [string, auto]
   description: [string, required]
-  steps:
-    id: [string, auto]
-    description: [string, required]
-    sortOrder: [int]
-    optionalStep: [bool, required]
-    detail: [string]
+  steps: [
+    [step: [id]
+    sortOrder: [int] # if sort order is provided, use it, otherwise default to insertion order
+    required: [bool]
+    ]
+  ]
