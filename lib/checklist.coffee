@@ -1,5 +1,14 @@
 _ = require 'underscore'
 wH = require './wholeHouse.coffee'
+Step = require './step.coffee'
+
+
+exports.delete = (options) ->
+  settings =
+    todo: console.log """
+      todo
+    """
+
 
 exports.create = (options) ->
   settings =
@@ -11,8 +20,8 @@ exports.create = (options) ->
 
   checklist =
     addStep: () ->
-      step = require './addStep.coffee'
-      settings.step.push step
+      step = Step()
+      settings.steps.push step
     removeStep: (stepID) ->
       todo:
         console.log """
