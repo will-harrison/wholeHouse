@@ -1,3 +1,6 @@
-module.exports = (parameter) ->
-  moment = require 'moment'
-  console.log moment()
+module.exports.tester = () ->
+  a = {}
+  a.item1 =
+    description: "tester"
+    name: "name"
+

@@ -12,6 +12,7 @@ var express = require('express.io')
   , timer = require('./routes/timer')
   , db = require('./db.js')
   , events = require('./routes/event')
+  , wH = require('./lib/wholeHouse.js')
 
 // all environments 
 app.set('port', process.env.TEST_PORT || 3000);
