@@ -36,31 +36,3 @@ exports.countdownEmit = (data) ->
   setTimeout callback, 1000
 
 
-exports.wH.user =
-  [
-    id: ''
-    userName: 'Will'
-    uri:
-      nexus10: 'wh:24.75.121.111.will.nexus10'
-      iphone: 'wh:24.75.121.111.will.iphone'
-      desktop: 'wh:24.75.121.111.will.desktop'
-    name: 'Will Harrison'
-    preferences:
-      notifications:
-        alarm:
-          uri: 
-            primary: @iphone
-            secondary: @desktop
-        event:
-          uri:
-            primary: @desktop
-            secondary: @iphone
-            tertiary: @nexus10
-  ,
-    id: ''
-    userName: 'Kristi'
-    uri:
-      iphone: 'wh:24.75.121.111.kristi.iphone'
-      netbook: 'wh:24.75.121.111.kristi.netbook'
-      desktop: 'wh:24.75.121.111.kristi.desktop'
-  ]
