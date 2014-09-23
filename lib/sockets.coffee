@@ -24,7 +24,7 @@ module.exports.listen = (server) ->
       require('./chat.js')(socket)
       return
     socket.on 'alarmStart', (data) ->
-      reuire('./alarmTalk.js')(socket)
+      require('./alarmTalk.js')(socket)
       return
   return
 
